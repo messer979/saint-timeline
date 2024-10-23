@@ -1,3 +1,12 @@
+// interface Person {
+//   name: string;
+//   birthYear: string;
+//   deathYear: string;
+//   description: string;
+// }
+
+
+// export const people: Person[] = [
 export const people = [
   { name: "St. Peter", birthYear: "-000001", deathYear: "0064", description:" First Pope" },      
   { name: "St. Paul", birthYear: "0005", deathYear:  "0067", description:" Apostle to the Gentiles" },        
