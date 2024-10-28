@@ -1,0 +1,9 @@
+/* styles/timeline.css */
+.vis-group .vis-label {
+  @apply text-white !important; /* Tailwind class for white text */
+}
+
+.vis-time-axis .vis-text,
+.vis-current-time {
+  @apply text-white !important; /* Tailwind class for white text */
+}

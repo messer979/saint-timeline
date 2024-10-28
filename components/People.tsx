@@ -1,26 +1,25 @@
-// interface Person {
-//   name: string;
-//   birthYear: string;
-//   deathYear: string;
-//   description: string;
-// }
-
+interface HistoricalFigure {
+  name: string;
+  birthYear: string;
+  deathYear: string;
+  description: string;
+}
 
 // export const people: Person[] = [
-export const people = [
+export const people: HistoricalFigure[] = [
   { name: "St. Peter", birthYear: "-000001", deathYear: "0064", description:" First Pope" },      
   { name: "St. Paul", birthYear: "0005", deathYear:  "0067", description:" Apostle to the Gentiles" },        
-  { name: "St. Augustine of Hippo", birthYear:  "0354", deathYear:  "0430" },
+  { name: "St. Augustine of Hippo", birthYear: "0354", deathYear: "0430", description: "One of the most influential theologians and philosophers of the early Church, St. Augustine's writings, including 'Confessions' and 'City of God,' helped shape Western Christianity and philosophy. Originally a skeptic, he converted to Christianity and became the Bishop of Hippo." },
   { name: "St. Jerome", birthYear:  "0347", deathYear:  "0420", description:" Translator of the Bible" },   
   { name: "St. Gregory the Great", birthYear:  "0540", deathYear:  "0604", description:" Pope and Doctor of the Church" },  
   { name: "St. Benedict of Nursia", birthYear:  "0480", deathYear:  "0547", description:" Founder of Western monasticism" }, 
-  { name: "St. Francis of Assisi", birthYear: "1181", deathYear: "1226" },
+  { name: "St. Francis of Assisi", birthYear: "1181", deathYear: "1226", description: "Founder of the Franciscan Order, St. Francis is known for his love of nature, humility, and devotion to a life of poverty. He is often depicted with animals and is the patron saint of ecology and animals." },
   { name: "St. Dominic", birthYear: "1170", deathYear: "1221", description:" Founder of the Dominicans" }, 
   { name: "St. Thomas Aquinas", birthYear: "1225", deathYear: "1274", description:" Doctor of the Church, theologian" },   
-  { name: "St. Clare of Assisi", birthYear: "1194", deathYear: "1253" },
-  { name: "St. Catherine of Siena", birthYear: "1347", deathYear: "1380" },
-  { name: "St. Teresa of Ávila", birthYear: "1515", deathYear: "1582" },
-  { name: "St. John of the Cross", birthYear: "1542", deathYear: "1591" },
+  { name: "St. Clare of Assisi", birthYear: "1194", deathYear: "1253", description: "A close follower of St. Francis, St. Clare founded the Order of Poor Ladies (later known as the Poor Clares) and led a life of austere poverty and prayer. She is known for her deep faith and dedication to service and contemplation." },
+  { name: "St. Catherine of Siena", birthYear: "1347", deathYear: "1380", description: "A mystic and Doctor of the Church, St. Catherine played a significant role in advising Church leaders during the Avignon Papacy. She is known for her intense visions, letters to the Pope, and work in bringing about church reforms and spiritual renewal." },
+  { name: "St. Teresa of Ávila", birthYear: "1515", deathYear: "1582", description: "A Carmelite nun, mystic, and reformer, St. Teresa was a prominent figure in the Counter-Reformation. Her works on contemplative prayer, including 'The Interior Castle,' have made her one of the greatest spiritual teachers of the Church. She was named a Doctor of the Church in 1970." },
+  { name: "St. John of the Cross", birthYear: "1542", deathYear: "1591", description: "A Spanish mystic and Carmelite priest, St. John co-founded the Discalced Carmelites with St. Teresa of Ávila. He is known for his writings on the 'Dark Night of the Soul,' exploring the path to union with God through suffering and spiritual transformation." },
   { name: "St. Ignatius of Loyola", birthYear: "1491", deathYear: "1556", description:" Founder of the Jesuits" }, 
   { name: "St. Francis Xavier", birthYear: "1506", deathYear: "1552", description:" Jesuit missionary" },    
   { name: "St. Patrick", birthYear:  "0385", deathYear:  "0461", description:" Apostle of Ireland" },  
@@ -43,7 +42,7 @@ export const people = [
   { name: "St. Edith Stein", birthYear: "1891", deathYear: "1942", description:" Philosopher and martyr" },   
   { name: "St. Teresa of Calcutta", birthYear: "1910", deathYear: "1997", description:" Founder of the Missionaries of Charity" },  
   { name: "St. John Paul II", birthYear: "1920", deathYear: "2005", description:" Pope" },   
-  { name: "St. Pio of Pietrelcina (Padre Pio)", birthYear: "1887", deathYear: "1968" },
+  { name: "St. Pio of Pietrelcina (Padre Pio)", birthYear: "1887", deathYear: "1968", description: "A Capuchin friar known for his piety, charity, and bearing the stigmata, Padre Pio dedicated his life to prayer, confession, and spiritual guidance. He was known for his ability to read hearts and for miraculous healings, attracting followers worldwide." },
   { name: "St. Francis de Sales", birthYear: "1567", deathYear: "1622", description:" Doctor of the Church" },  
   { name: "St. Louis de Montfort", birthYear: "1673", deathYear: "1716", description:" Marian theologian" },  
   { name: "St. Alphonsus Liguori", birthYear: "1696", deathYear: "1787", description:" Founder of the Redemptorists" },  
