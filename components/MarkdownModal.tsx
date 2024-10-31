@@ -6,22 +6,28 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import ReactMarkdown from 'react-markdown';
-interface MarkdownModalProps {
-  open: boolean; // Content to be displayed in the modal
-  content: string; // Content to be displayed in the modal
-  title: string; // Content to be displayed in the modal
-  handleClose: () => void; // Content to be displayed in the modal
-}
 
-const MarkdownModal: React.FC<MarkdownModalProps> = ({ open, content, title, handleClose }) => {
+const MarkdownModal = ({ open, record, handleClose }) => {
+  const convertYear = (year) => {
+    // Check if the year is negative
+    if (year < 0) {
+      // Convert to absolute value and format it as BC
+      return `${Math.abs(year)} BC`;
+    }
+    return `${Math.abs(year)}`; // For AD years, just return as string
+  };
 
   return (
     <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
       	<DialogTitle>
-      	  {title}
+          {record.end ? (
+        	  <>{record.title} {convertYear(record.startYear)}-{convertYear(record.endYear)}</>
+          ) : (
+            <>{record.title} {convertYear(record.startYear)}</>
+          )}
       	</DialogTitle>
       	<DialogContent dividers>
-        	<ReactMarkdown>{content}</ReactMarkdown>
+        	<ReactMarkdown>{record.longDescription}</ReactMarkdown>
       	</DialogContent>
     	<DialogActions>
         	<Button onClick={handleClose} color="primary">

@@ -1,35 +1,41 @@
 // LifeTimeline.tsx
 'use client';
-import React, { useState,useMemo, useCallback } from 'react';
+import React, { useState,useMemo, useCallback, useEffect } from 'react';
 import { DataSet } from 'vis-timeline/standalone';
 import { people } from './People';
 import { keyEvents } from './Events';
+import { heresies } from './Heresies';
 import MarkdownModal from './MarkdownModal'; // Import the MUI modal component
 import TimelineComponent from './TimelineComponent'; // Import the new timeline component
+import Checkbox from '@mui/material/Checkbox';
+
 
 const LifeTimeline = () => {
   const [showSaints, setShowSaints] = useState(true);
   const [showEvents, setShowEvents] = useState(true);
-  const [modalContent, setModalContent] = useState("");
-  const [modalTitle, setModalTitle] = useState("");
+  const [showHeresies, setShowHeresies] = useState(true);
+  const [modalRecord, setModalRecord] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
 
 
   const items = useMemo(() => {
     const peopleItems = people.map((person, index) => ({
       id: index + 1,
-      content: person.name,
+      content: `<span class="text-responsive">${person.name}</span>`,
+      startYear:`${person.birthYear}`,
       start: `${person.birthYear}-01-01`,
+      endYear:`${person.deathYear}`,
       end: `${person.deathYear}-01-01`,
-      title: person.description,
-      group: 'Saints'
-      // longDescription: person.longDescription
+      title: `${person.name}: ${person.description}`,
+      group: 'Saints',
+      longDescription: person.longDescription
     }));
 
     const eventItems = keyEvents.map((event, index) => ({
       id: `e${index + 1}`,
       content: event.name,
       type: event.type,
+      startYear:`${event.start}`,
       start: `${event.start}-01-01`,
       title: event.description,
       group: 'Events',
@@ -37,18 +43,33 @@ const LifeTimeline = () => {
       style: "color: white;"
     }));
 
-    return new DataSet([
-      ...(showSaints ? peopleItems : []),
-      ...(showEvents ? eventItems : [])
-    ]);
-  }, [showSaints, showEvents]);
+  const heresyItems = heresies.map((heresy, index) => ({
+    id: `h${index + 1}`,
+    content: `<span class="text-responsive">${heresy.name}</span>`,
+    type: 'point',
+    startYear: `${heresy.start}`,
+    start: `${heresy.start}-01-01`,
+    title: heresy.description,
+    longDescription: heresy.longDescription,
+    group: 'Heresies',
+    style: "color: crimson;",
+  }));
+
+  return new DataSet([
+    ...(showSaints ? peopleItems : []),
+    ...(showEvents ? eventItems : []),
+    ...(showHeresies ? heresyItems : [])
+  ]);
+  }, []);
 
   const groups = useMemo(() => {
     return new DataSet([
-      { id: "Events", content: "Events" },
-      { id: "Saints", content: "Saints" },
+      { id: "Events", content: "Events", visible: showEvents },
+      { id: "Saints", content: "Saints", visible:  showSaints},
+      { id: "Heresies", content: "Heresies", visible: showHeresies },
+
     ]);
-  }, []);
+  }, [showSaints, showEvents, showHeresies]);
 
   const options = {
     stack: true,
@@ -61,15 +82,14 @@ const LifeTimeline = () => {
     min: '-004000-01-01',
     max: '2100-01-01',
     zoomMax: 31556952000000,
-    selectable: false
+    selectable: false,
+    groupHeightMode: "fixed"
   };
 
   const handleItemClick = useCallback((clickedItem) => {
     // Check if clickedItem is an object and contains longDescription
-    console.log(clickedItem)
     if (clickedItem && typeof clickedItem === 'object' && 'longDescription' in clickedItem && clickedItem.longDescription != undefined) {
-      setModalContent(clickedItem.longDescription || ""); // Set the content for the modal
-      setModalTitle(clickedItem.content)
+      setModalRecord(clickedItem); // Set the content for the modal
       setModalOpen(true);
     }
   }, []);
@@ -78,17 +98,22 @@ const LifeTimeline = () => {
 
   const handleToggleSaints = useCallback(() => setShowSaints(prev => !prev), []);
   const handleToggleEvents = useCallback(() => setShowEvents(prev => !prev), []);
+  const handleToggleHeresies = useCallback(() => setShowHeresies(prev => !prev), []);
 
   return (
     <div>
       <div className="mb-2">
         <label className="inline-flex items-center">
-          <input type="checkbox" checked={showSaints} onChange={handleToggleSaints} className="mr-2" />
+          <Checkbox checked={showSaints} onChange={handleToggleSaints} className="mr-2" />
           Show Saints
         </label>
         <label className="inline-flex items-center ml-2">
-          <input type="checkbox" checked={showEvents} onChange={handleToggleEvents} className="mr-2" />
+          <Checkbox checked={showEvents} onChange={handleToggleEvents} className="mr-2" />
           Show Events
+        </label>
+        <label className="inline-flex items-center ml-2">
+          <Checkbox checked={showHeresies} onChange={handleToggleHeresies} className="mr-2" />
+          Show Heresies
         </label>
       </div>
 
@@ -102,8 +127,7 @@ const LifeTimeline = () => {
       {/* MUI Modal Component */}
       <MarkdownModal
         open={modalOpen}
-        content={modalContent}
-        title={modalTitle}
+        record={modalRecord}
         handleClose={handleClose}
       />
     </div>
