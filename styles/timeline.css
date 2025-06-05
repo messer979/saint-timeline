@@ -1,9 +1,36 @@
 /* styles/timeline.css */
 .vis-group .vis-label {
-  @apply text-white !important; /* Tailwind class for white text */
+  color: white !important;
 }
 
 .vis-time-axis .vis-text,
 .vis-current-time {
-  @apply text-white !important; /* Tailwind class for white text */
+  color: white !important;
+}
+
+/* Timeline item content styling - only for Saints */
+.vis-item.saint-timeline-item .vis-item-content {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  padding: 2px 4px !important;
+  white-space: normal !important;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  text-overflow: ellipsis !important;
+}
+
+/* Make only Saints timeline items the same height */
+.vis-item.saint-timeline-item {
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+}
+
+/* Ensure Saints text doesn't overflow */
+.vis-item.saint-timeline-item .vis-item-content {
+  height: 100% !important;
+  box-sizing: border-box !important;
 }

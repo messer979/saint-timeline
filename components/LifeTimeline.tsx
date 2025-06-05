@@ -1,34 +1,85 @@
 // LifeTimeline.tsx
 'use client';
-import React, { useState,useMemo, useCallback, useEffect } from 'react';
+import React, { useState, useMemo, useCallback, useEffect, useRef } from 'react';
 import { DataSet } from 'vis-timeline/standalone';
 import { people } from './People';
 import { keyEvents } from './Events';
 import { heresies } from './Heresies';
 import MarkdownModal from './MarkdownModal'; // Import the MUI modal component
 import TimelineComponent from './TimelineComponent'; // Import the new timeline component
+import GoToYearWidget from './GoToYearWidget';
+import TagFilterWidget from './TagFilterWidget';
 import Checkbox from '@mui/material/Checkbox';
+import TextField from '@mui/material/TextField';
 
 
 const LifeTimeline = () => {
   const [showSaints, setShowSaints] = useState(true);
-  const [showEvents, setShowEvents] = useState(true);
-  const [showHeresies, setShowHeresies] = useState(true);
+  const [showEvents, setShowEvents] = useState(true);  const [showHeresies, setShowHeresies] = useState(true);
+  const [saintSearchTerm, setSaintSearchTerm] = useState('');
+  const [selectedTags, setSelectedTags] = useState([]);
   const [modalRecord, setModalRecord] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
+  const timelineControlsRef = useRef(null);
 
+  // Handle timeline ready callback
+  const handleTimelineReady = useCallback((controls) => {
+    timelineControlsRef.current = controls;
+  }, []);
 
+  // Handle go to year from widget
+  const handleGoToYear = useCallback((year) => {
+    if (timelineControlsRef.current && timelineControlsRef.current.centerOnYear) {
+      timelineControlsRef.current.centerOnYear(year);
+    }  }, []);
+  // Get all unique tags from people data
+  const availableTags = useMemo(() => {
+    const allTags = people.reduce((tags, person) => {
+      return tags.concat(person.tags || []);
+    }, []);
+    return Array.from(new Set(allTags)).sort();
+  }, []);
+
+  // Handle tag selection change
+  const handleTagsChange = useCallback((tags) => {
+    setSelectedTags(tags);
+  }, []);
   const items = useMemo(() => {
-    const peopleItems = people.map((person, index) => ({
+    // Filter people based on search term and selected tags
+    const filteredPeople = people.filter(person => {
+      // Search term filter
+      if (saintSearchTerm !== '') {
+        const nameMatch = person.name.toLowerCase().includes(saintSearchTerm.toLowerCase());
+        const descMatch = person.description.toLowerCase().includes(saintSearchTerm.toLowerCase());
+        const longDescMatch = person.longDescription.toLowerCase().includes(saintSearchTerm.toLowerCase());
+        if (!(nameMatch || descMatch || longDescMatch)) {
+          return false;
+        }
+      }
+        // Tag filter (AND logic - person must have ALL selected tags)
+      if (selectedTags.length > 0) {
+        const personTags = person.tags || [];
+        const hasAllSelectedTags = selectedTags.every(selectedTag => 
+          personTags.includes(selectedTag)
+        );
+        if (!hasAllSelectedTags) {
+          return false;
+        }
+      }
+      
+      return true;
+    });
+    const peopleItems = filteredPeople.map((person, index) => ({
       id: index + 1,
-      content: `<span class="text-responsive">${person.name}</span>`,
+      content: `<span class="text-responsive saint-item">${person.name}</span>`,
       startYear:`${person.birthYear}`,
       start: `${person.birthYear}-01-01`,
       endYear:`${person.deathYear}`,
       end: `${person.deathYear}-01-01`,
       title: `${person.name}: ${person.description}`,
       group: 'Saints',
-      longDescription: person.longDescription
+      longDescription: person.longDescription,
+      className: 'saint-timeline-item'
     }));
 
     const eventItems = keyEvents.map((event, index) => ({
@@ -54,13 +105,12 @@ const LifeTimeline = () => {
     group: 'Heresies',
     style: "color: crimson;",
   }));
-
   return new DataSet([
     ...(showSaints ? peopleItems : []),
     ...(showEvents ? eventItems : []),
     ...(showHeresies ? heresyItems : [])
   ]);
-  }, []);
+  }, [showSaints, showEvents, showHeresies, saintSearchTerm, selectedTags]);
 
   const groups = useMemo(() => {
     return new DataSet([
@@ -93,35 +143,63 @@ const LifeTimeline = () => {
       setModalOpen(true);
     }
   }, []);
-
   const handleClose = useCallback(() => setModalOpen(false), []);
-
   const handleToggleSaints = useCallback(() => setShowSaints(prev => !prev), []);
   const handleToggleEvents = useCallback(() => setShowEvents(prev => !prev), []);
   const handleToggleHeresies = useCallback(() => setShowHeresies(prev => !prev), []);
 
   return (
     <div>
-      <div className="mb-2">
-        <label className="inline-flex items-center">
-          <Checkbox checked={showSaints} onChange={handleToggleSaints} className="mr-2" />
-          Show Saints
-        </label>
-        <label className="inline-flex items-center ml-2">
-          <Checkbox checked={showEvents} onChange={handleToggleEvents} className="mr-2" />
-          Show Events
-        </label>
-        <label className="inline-flex items-center ml-2">
-          <Checkbox checked={showHeresies} onChange={handleToggleHeresies} className="mr-2" />
-          Show Heresies
-        </label>
-      </div>
-
-      <TimelineComponent
+      <div className="mb-4 flex flex-wrap items-center gap-4">
+        <div className="flex items-center gap-2">
+          <label className="inline-flex items-center">
+            <Checkbox checked={showSaints} onChange={handleToggleSaints} className="mr-2" />
+            Show Saints
+          </label>
+          <label className="inline-flex items-center">
+            <Checkbox checked={showEvents} onChange={handleToggleEvents} className="mr-2" />
+            Show Events
+          </label>
+          <label className="inline-flex items-center">
+            <Checkbox checked={showHeresies} onChange={handleToggleHeresies} className="mr-2" />
+            Show Heresies
+          </label>        
+        </div>
+          <div className="flex items-center gap-2">
+          <TextField 
+            id="saint-search"
+            label="Search Saints"
+            className="dark:bg-gray-400 dark:text-gray-200 rounded-md"
+            variant="filled"
+            value={saintSearchTerm} 
+            // value="Peter" 
+            onChange={(e) => setSaintSearchTerm(e.target.value)}
+            placeholder="Search saints by name or description..."
+            size="small"
+          />
+          {saintSearchTerm && (
+            <button
+              onClick={() => setSaintSearchTerm('')}
+              className="px-2 py-1 text-sm text-gray-500 hover:text-gray-700"
+              title="Clear search"
+            >
+              ✕
+            </button>
+          )}
+        </div>        <div className="flex items-center gap-4">
+          <GoToYearWidget onGoToYear={handleGoToYear} />
+          <TagFilterWidget 
+            availableTags={availableTags}
+            selectedTags={selectedTags}
+            onTagsChange={handleTagsChange}
+          />
+        </div>
+      </div>      <TimelineComponent
         items={items}
         groups={groups}
         options={options}
         onItemClick={handleItemClick}
+        onTimelineReady={handleTimelineReady}
       />
 
       {/* MUI Modal Component */}
