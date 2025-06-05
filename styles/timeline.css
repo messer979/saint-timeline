@@ -1,11 +1,50 @@
 /* styles/timeline.css */
+
+/* Timeline container background - responsive to dark/light mode */
+.vis-timeline {
+  background-color: rgb(255 255 255) !important; /* white for light mode */
+}
+
+@media (prefers-color-scheme: dark) {
+  .vis-timeline {
+    background-color: rgb(17 24 39) !important; /* gray-900 for dark mode */
+  }
+}
+
+:is(.dark *) .vis-timeline {
+  background-color: rgb(17 24 39) !important; /* gray-900 for dark mode */
+}
+
+/* Timeline text colors - responsive to dark/light mode */
 .vis-group .vis-label {
-  color: white !important;
+  color: rgb(31 41 55) !important; /* gray-800 for light mode */
 }
 
 .vis-time-axis .vis-text,
 .vis-current-time {
-  color: white !important;
+  color: rgb(31 41 55) !important; /* gray-800 for light mode */
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  .vis-group .vis-label {
+    color: rgb(229 231 235) !important; /* gray-200 for dark mode */
+  }
+
+  .vis-time-axis .vis-text,
+  .vis-current-time {
+    color: rgb(229 231 235) !important; /* gray-200 for dark mode */
+  }
+}
+
+/* If using Tailwind's dark: class variant */
+:is(.dark *) .vis-group .vis-label {
+  color: rgb(229 231 235) !important; /* gray-200 for dark mode */
+}
+
+:is(.dark *) .vis-time-axis .vis-text,
+:is(.dark *) .vis-current-time {
+  color: rgb(229 231 235) !important; /* gray-200 for dark mode */
 }
 
 /* Timeline item content styling - only for Saints */
@@ -33,4 +72,26 @@
 .vis-item.saint-timeline-item .vis-item-content {
   height: 100% !important;
   box-sizing: border-box !important;
+}
+
+/* Event timeline items styling - responsive to dark/light mode */
+.vis-item.event-timeline-item .vis-item-content {
+  color: rgb(31 41 55) !important; /* gray-800 for light mode */
+}
+
+/* Dark mode overrides for events */
+@media (prefers-color-scheme: dark) {
+  .vis-item.event-timeline-item .vis-item-content {
+    color: rgb(229 231 235) !important; /* gray-200 for dark mode */
+  }
+}
+
+/* If using Tailwind's dark: class variant for events */
+:is(.dark *) .vis-item.event-timeline-item .vis-item-content {
+  color: rgb(229 231 235) !important; /* gray-200 for dark mode */
+}
+
+/* Heresy timeline items styling - crimson color for both modes */
+.vis-item.heresy-timeline-item .vis-item-content {
+  color: crimson !important;
 }

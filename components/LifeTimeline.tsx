@@ -80,9 +80,7 @@ const LifeTimeline = () => {
       group: 'Saints',
       longDescription: person.longDescription,
       className: 'saint-timeline-item'
-    }));
-
-    const eventItems = keyEvents.map((event, index) => ({
+    }));    const eventItems = keyEvents.map((event, index) => ({
       id: `e${index + 1}`,
       content: event.name,
       type: event.type,
@@ -91,9 +89,8 @@ const LifeTimeline = () => {
       title: event.description,
       group: 'Events',
       longDescription: event.longDescription,
-      style: "color: white;"
+      className: 'event-timeline-item'
     }));
-
   const heresyItems = heresies.map((heresy, index) => ({
     id: `h${index + 1}`,
     content: `<span class="text-responsive">${heresy.name}</span>`,
@@ -103,7 +100,7 @@ const LifeTimeline = () => {
     title: heresy.description,
     longDescription: heresy.longDescription,
     group: 'Heresies',
-    style: "color: crimson;",
+    className: 'heresy-timeline-item'
   }));
   return new DataSet([
     ...(showSaints ? peopleItems : []),

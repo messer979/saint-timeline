@@ -565,7 +565,7 @@ export const people: HistoricalFigure[] = [{
   deathYear: "0063",
   description: "Disciple of Christ and witness to the Resurrection",
   longDescription: "St. Mary Magdalene is one of the most significant female figures in the New Testament, known for her deep faith in Jesus and her role as the first witness to the Resurrection. Traditionally associated with repentance, she is revered as the 'Apostle to the Apostles.'\n\n Names: Μαρία ἡ Μαγδαληνή/Maria he Magdalene (Greek), Maria Magdalena (Latin)",
-  tags: ["apostle", "disciple"]
+  tags: ["disciple"]
 },
 {
   name: "St. John the Baptist",
