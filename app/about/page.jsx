@@ -16,7 +16,7 @@ export default function About() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Our Mission</h2>
               <p className="text-gray-600 dark:text-gray-300 mb-4">
-                This page was created primarily using AI by Chris Messer. If there are any mistakes, please don't hesitate to reach out at messer979@gmail.com.
+                This page was created primarily using AI by Chris Messer. If there are any mistakes, please don&apos;t hesitate to reach out at messer979@gmail.com.
               </p>
             </section>
 
@@ -24,7 +24,7 @@ export default function About() {
               <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Features</h2>
               <ul className="list-disc list-inside text-gray-600 dark:text-gray-300 space-y-2">
                 <li>Interactive timeline showing the lifespans of saints and biblical figures</li>
-                <li>Detailed information about each person's life and contributions</li>
+                <li>Detailed information about each person&apos;s life and contributions</li>
                 <li>Tag-based categorization (martyrs, confessors, prophets, etc.)</li>
                 <li>Historical context and connections between different periods</li>
                 <li>Educational resources for students and educators</li>
