@@ -56,6 +56,7 @@ const GoToYearWidget: React.FC<GoToYearWidgetProps> = ({ onGoToYear }) => {
         size="small"
         label="Go to Year"
         value={yearInput}
+        type="number"
         onChange={(e) => setYearInput(e.target.value)}
         onKeyPress={handleKeyPress}
         placeholder="e.g. 500, -100"
@@ -66,21 +67,68 @@ const GoToYearWidget: React.FC<GoToYearWidgetProps> = ({ onGoToYear }) => {
             backgroundColor: 'transparent',
           },
           '& .MuiInputLabel-root': {
-            color: 'inherit',
+            color: 'rgb(31, 41, 55)',
+            '&.Mui-focused': {
+              color: 'rgb(59, 130, 246)',
+            },
           },
           '& .MuiOutlinedInput-root': {
             '& fieldset': {
-              borderColor: 'rgba(0, 0, 0, 0.23)',
+              borderColor: 'rgba(31, 41, 55, 0.23)',
             },
             '&:hover fieldset': {
-              borderColor: 'rgba(0, 0, 0, 0.87)',
+              borderColor: 'rgba(31, 41, 55, 0.87)',
             },
             '&.Mui-focused fieldset': {
-              borderColor: 'primary.main',
+              borderColor: 'rgb(59, 130, 246)',
             },
           },
           '& .MuiInputBase-input': {
-            color: 'inherit',
+            color: 'rgb(31, 41, 55)',
+          },
+          '@media (prefers-color-scheme: dark)': {
+            '& .MuiInputLabel-root': {
+              color: 'rgb(229, 231, 235)',
+              '&.Mui-focused': {
+                color: 'rgb(59, 130, 246)',
+              },
+            },
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: 'rgba(229, 231, 235, 0.23)',
+              },
+              '&:hover fieldset': {
+                borderColor: 'rgba(229, 231, 235, 0.87)',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: 'rgb(59, 130, 246)',
+              },
+            },
+            '& .MuiInputBase-input': {
+              color: 'rgb(229, 231, 235)',
+            },
+          },
+          '.dark &': {
+            '& .MuiInputLabel-root': {
+              color: 'rgb(229, 231, 235)',
+              '&.Mui-focused': {
+                color: 'rgb(59, 130, 246)',
+              },
+            },
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: 'rgba(229, 231, 235, 0.23)',
+              },
+              '&:hover fieldset': {
+                borderColor: 'rgba(229, 231, 235, 0.87)',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: 'rgb(59, 130, 246)',
+              },
+            },
+            '& .MuiInputBase-input': {
+              color: 'rgb(229, 231, 235)',
+            },
           },
         }}
       />
@@ -90,9 +138,34 @@ const GoToYearWidget: React.FC<GoToYearWidgetProps> = ({ onGoToYear }) => {
         onClick={handleGoToYear}
         disabled={!yearInput.trim()}
         sx={{
-          backgroundColor: 'primary.main',
+          backgroundColor: 'rgb(59, 130, 246)',
+          color: 'white',
           '&:hover': {
-            backgroundColor: 'primary.dark',
+            backgroundColor: 'rgb(37, 99, 235)',
+          },
+          '&:disabled': {
+            backgroundColor: 'rgba(31, 41, 55, 0.12)',
+            color: 'rgba(31, 41, 55, 0.26)',
+          },
+          '@media (prefers-color-scheme: dark)': {
+            backgroundColor: 'rgb(59, 130, 246)',
+            '&:hover': {
+              backgroundColor: 'rgb(37, 99, 235)',
+            },
+            '&:disabled': {
+              backgroundColor: 'rgba(229, 231, 235, 0.12)',
+              color: 'rgba(229, 231, 235, 0.26)',
+            },
+          },
+          '.dark &': {
+            backgroundColor: 'rgb(59, 130, 246)',
+            '&:hover': {
+              backgroundColor: 'rgb(37, 99, 235)',
+            },
+            '&:disabled': {
+              backgroundColor: 'rgba(229, 231, 235, 0.12)',
+              color: 'rgba(229, 231, 235, 0.26)',
+            },
           },
         }}
       >
@@ -107,11 +180,27 @@ const GoToYearWidget: React.FC<GoToYearWidgetProps> = ({ onGoToYear }) => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         sx={{
-          borderColor: 'rgba(0, 0, 0, 0.23)',
-          color: 'inherit',
+          borderColor: 'rgba(31, 41, 55, 0.23)',
+          color: 'rgb(31, 41, 55)',
           '&:hover': {
-            borderColor: 'rgba(0, 0, 0, 0.87)',
-            backgroundColor: 'rgba(0, 0, 0, 0.04)',
+            borderColor: 'rgba(31, 41, 55, 0.87)',
+            backgroundColor: 'rgba(31, 41, 55, 0.04)',
+          },
+          '@media (prefers-color-scheme: dark)': {
+            borderColor: 'rgba(229, 231, 235, 0.23)',
+            color: 'rgb(229, 231, 235)',
+            '&:hover': {
+              borderColor: 'rgba(229, 231, 235, 0.87)',
+              backgroundColor: 'rgba(229, 231, 235, 0.04)',
+            },
+          },
+          '.dark &': {
+            borderColor: 'rgba(229, 231, 235, 0.23)',
+            color: 'rgb(229, 231, 235)',
+            '&:hover': {
+              borderColor: 'rgba(229, 231, 235, 0.87)',
+              backgroundColor: 'rgba(229, 231, 235, 0.04)',
+            },
           },
         }}
       >

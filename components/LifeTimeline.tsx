@@ -146,7 +146,8 @@ const LifeTimeline = () => {
   const handleToggleHeresies = useCallback(() => setShowHeresies(prev => !prev), []);
 
   return (
-    <div>      <div className="mb-4 flex flex-wrap items-center gap-4">
+    <div>      
+      <div className="mb-4 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
           <label className="inline-flex items-center text-gray-700 dark:text-gray-200">
             <Checkbox checked={showSaints} onChange={handleToggleSaints} className="mr-2" />
@@ -161,31 +162,113 @@ const LifeTimeline = () => {
             Show Heresies
           </label>        
         </div>
-          <div className="flex items-center gap-2">
-          <TextField 
+          <div className="flex items-center gap-2">          <TextField 
             id="saint-search"
             label="Search Saints"
-            className="dark:bg-gray-700 dark:text-gray-200 rounded-md"
             variant="filled"
             value={saintSearchTerm} 
-            // value="Peter" 
             onChange={(e) => setSaintSearchTerm(e.target.value)}
             placeholder="Search saints by name or description..."
             size="small"
             sx={{
-              '& .MuiInputBase-root': {
-                backgroundColor: 'transparent',
-              },
               '& .MuiInputLabel-root': {
-                color: 'inherit',
+                color: 'rgb(31, 41, 55)',
+                '&.Mui-focused': {
+                  color: 'rgb(59, 130, 246)',
+                },
               },
               '& .MuiFilledInput-root': {
-                backgroundColor: 'rgba(255, 255, 255, 0.09)',
+                backgroundColor: 'rgba(31, 41, 55, 0.09)',
+                color: 'rgb(31, 41, 55)',
                 '&:hover': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.13)',
+                  backgroundColor: 'rgba(31, 41, 55, 0.13)',
                 },
                 '&.Mui-focused': {
-                  backgroundColor: 'rgba(255, 255, 255, 0.16)',
+                  backgroundColor: 'rgba(31, 41, 55, 0.16)',
+                },
+                '&:before': {
+                  borderBottomColor: 'rgba(31, 41, 55, 0.42)',
+                },
+                '&:hover:before': {
+                  borderBottomColor: 'rgba(31, 41, 55, 0.87)',
+                },
+                '&:after': {
+                  borderBottomColor: 'rgb(59, 130, 246)',
+                },
+              },
+              '& .MuiInputBase-input': {
+                color: 'rgb(31, 41, 55)',
+                '&::placeholder': {
+                  color: 'rgba(31, 41, 55, 0.6)',
+                  opacity: 1,
+                },
+              },
+              '@media (prefers-color-scheme: dark)': {
+                '& .MuiInputLabel-root': {
+                  color: 'rgb(229, 231, 235)',
+                  '&.Mui-focused': {
+                    color: 'rgb(59, 130, 246)',
+                  },
+                },
+                '& .MuiFilledInput-root': {
+                  backgroundColor: 'rgba(229, 231, 235, 0.09)',
+                  color: 'rgb(229, 231, 235)',
+                  '&:hover': {
+                    backgroundColor: 'rgba(229, 231, 235, 0.13)',
+                  },
+                  '&.Mui-focused': {
+                    backgroundColor: 'rgba(229, 231, 235, 0.16)',
+                  },
+                  '&:before': {
+                    borderBottomColor: 'rgba(229, 231, 235, 0.42)',
+                  },
+                  '&:hover:before': {
+                    borderBottomColor: 'rgba(229, 231, 235, 0.87)',
+                  },
+                  '&:after': {
+                    borderBottomColor: 'rgb(59, 130, 246)',
+                  },
+                },
+                '& .MuiInputBase-input': {
+                  color: 'rgb(229, 231, 235)',
+                  '&::placeholder': {
+                    color: 'rgba(229, 231, 235, 0.6)',
+                    opacity: 1,
+                  },
+                },
+              },
+              '.dark &': {
+                '& .MuiInputLabel-root': {
+                  color: 'rgb(229, 231, 235)',
+                  '&.Mui-focused': {
+                    color: 'rgb(59, 130, 246)',
+                  },
+                },
+                '& .MuiFilledInput-root': {
+                  backgroundColor: 'rgba(229, 231, 235, 0.09)',
+                  color: 'rgb(229, 231, 235)',
+                  '&:hover': {
+                    backgroundColor: 'rgba(229, 231, 235, 0.13)',
+                  },
+                  '&.Mui-focused': {
+                    backgroundColor: 'rgba(229, 231, 235, 0.16)',
+                  },
+                  '&:before': {
+                    borderBottomColor: 'rgba(229, 231, 235, 0.42)',
+                  },
+                  '&:hover:before': {
+                    borderBottomColor: 'rgba(229, 231, 235, 0.87)',
+                  },
+                  '&:after': {
+                    borderBottomColor: 'rgb(59, 130, 246)',
+                  },
+                },
+                '& .MuiInputBase-input': {
+                  color: 'rgb(229, 231, 235)',
+                  '&::placeholder': {
+                    color: 'rgba(229, 231, 235, 0.6)',
+                    opacity: 1,
+                  },
                 },
               },
             }}
@@ -193,7 +276,7 @@ const LifeTimeline = () => {
           {saintSearchTerm && (
             <button
               onClick={() => setSaintSearchTerm('')}
-              className="px-2 py-1 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+              className="px-2 py-1 text-sm text-gray-500 dark:text-white-400 hover:text-gray-700 dark:hover:text-gray-300"
               title="Clear search"
             >
               ✕
