@@ -31,7 +31,7 @@ const Header: React.FC = () => {
 
           {/* Title - centered */}
           <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-100 absolute left-1/2 transform -translate-x-1/2">
-            Church History Timeline
+            Timeline of Saints
           </h1>
 
           {/* Spacer to balance the layout */}

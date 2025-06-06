@@ -40,7 +40,12 @@ export default function About() {
                 time periods.
               </p>
             </section>
-
+            <section className="mb-8">
+                <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-200 mb-4">Attribution</h3>
+                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                    <a target="_blank" href="https://icons8.com/icon/9VW5wenANa7W/christian-cross">Christian Cross</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+                </p>
+            </section>
           </div>
         </div>
       </div>
