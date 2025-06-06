@@ -16,8 +16,9 @@
 }
 
 /* Timeline text colors - responsive to dark/light mode */
-.vis-group .vis-label {
-  color: rgb(31 41 55) !important; /* gray-800 for light mode */
+.vis-group .vis-label,
+.vis-labelset .vis-label {
+  color: rgb(31 41 55); /* gray-800 for light mode */
 }
 
 .vis-time-axis .vis-text,
@@ -27,7 +28,8 @@
 
 /* Dark mode overrides */
 @media (prefers-color-scheme: dark) {
-  .vis-group .vis-label {
+  .vis-group .vis-label,
+  .vis-labelset .vis-label {
     color: rgb(229 231 235) !important; /* gray-200 for dark mode */
   }
 
@@ -38,7 +40,8 @@
 }
 
 /* If using Tailwind's dark: class variant */
-:is(.dark *) .vis-group .vis-label {
+:is(.dark *) .vis-group .vis-label,
+:is(.dark *) .vis-labelset .vis-label {
   color: rgb(229 231 235) !important; /* gray-200 for dark mode */
 }
 
