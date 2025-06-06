@@ -44,7 +44,7 @@ export const keyEvents: HistoricalEvent[] = [
 		longDescription: "### Council of Trent (1545–1563)\n\nThe **Council of Trent**, held between **1545** and **1563**, was the **Catholic Church's** major response to the **Protestant Reformation**. Convened by **Pope Paul III**, the council addressed issues of doctrine, corrected abuses within the church, and reasserted core **Catholic beliefs**. It established measures for reforming church practices and redefined Catholic doctrine in ways that solidified differences between Catholic and Protestant theology."
 	}, 
 	{
-		name: "Second Vatican Council",
+		name: "Vatican II",
 		type: "point",
 		start: "1962",
 		description: "Ecumenical council that modernized many practices within the Catholic Church.",
@@ -246,12 +246,54 @@ export const keyEvents: HistoricalEvent[] = [
     start: "0787",
     description: "Restored the veneration of icons, declaring them an important aspect of Christian worship.",
     longDescription: "### Second Council of Nicaea\n\nIn **787 AD**, the **Second Council of Nicaea** was convened to resolve the **Iconoclast Controversy**. The council ruled in favor of the **veneration of icons** (religious images), establishing that they are worthy of honor as long as the worship is directed to God alone."
-  },
-  {
+  },  {
     name: "4th Council of Const.",
     type: "point",
     start: "0869",
     description: "Addressed the Photian Schism and issues within the Byzantine Church.",
     longDescription: "### Fourth Council of Constantinople\n\nHeld in **869 AD**, the **Fourth Council of Constantinople** addressed the **Photian Schism** and disciplinary matters within the **Byzantine Church**. This council reaffirmed earlier doctrinal decisions and condemned **Photius** as Patriarch of Constantinople."
+  },
+  {
+    name: "Start of Crusades",
+    type: "point",
+    start: "1095",
+    description: "Pope Urban II calls for the First Crusade to reclaim the Holy Land.",
+    longDescription: "### First Crusade (1095-1099)\n\nIn **1095**, **Pope Urban II** proclaimed the **First Crusade** at the **Council of Clermont**, calling for Christian knights to reclaim the **Holy Land** from Muslim control. The crusade resulted in the capture of **Jerusalem** in **1099** and the establishment of **Crusader States** in the Middle East."
+  },
+  {
+    name: "Concordat of Worms",
+    type: "point",
+    start: "1122",
+    description: "Agreement ending the Investiture Controversy between Pope and Emperor.",
+    longDescription: "### Concordat of Worms (1122)\n\nThe **Concordat of Worms** ended the **Investiture Controversy** between **Pope Calixtus II** and **Holy Roman Emperor Henry V**. This agreement established that the Church would control spiritual investiture while the Emperor retained temporal authority over bishops, resolving a major conflict between papal and imperial power."
+  },
+  {
+    name: "Fall of Acre",
+    type: "point",
+    start: "1291",
+    description: "Fall of the last major Crusader stronghold, effectively ending the Crusades.",
+    longDescription: "### Fall of Acre (1291)\n\nThe fall of **Acre** to the **Mamluks** in **1291** marked the end of the major **Crusader presence** in the **Holy Land**. This event effectively concluded the traditional Crusading period, as the last significant Christian stronghold in the region was lost."
+  },
+  {
+    name: "Avignon Papacy",
+    type: "point",
+    start: "1309",
+    end: "1377",
+    description: "Period when the papal court resided in Avignon rather than Rome.",
+    longDescription: "### Babylonian Captivity of the Papacy (1309-1377)\n\nFrom **1309 to 1377**, the **papal court** resided in **Avignon, France**, rather than **Rome**. This period, often called the **Babylonian Captivity**, was marked by French influence over the papacy and contributed to growing calls for Church reform and the eventual **Western Schism**."
+  },
+  {
+    name: "Western Schism",
+    type: "point",
+    start: "1378",
+    description: "Beginning of the period with rival papal claimants in Rome and Avignon.",
+    longDescription: "### Western Schism Begins (1378)\n\nThe **Western Schism** began in **1378** when rival papal claimants emerged in **Rome** and **Avignon**, each claiming to be the legitimate pope. This crisis deeply divided **Western Christianity** and was not resolved until the **Council of Constance** in **1417**."
+  },
+  {
+    name: "Reconquista Completed",
+    type: "point",
+    start: "1492",
+    description: "Catholic Monarchs complete the Christian reconquest of Spain.",
+    longDescription: "### Completion of the Reconquista (1492)\n\nThe **Catholic Monarchs Ferdinand and Isabella** completed the **Reconquista** by capturing **Granada**, the last Muslim kingdom in **Spain**. This same year saw the **expulsion of Jews** from Spain and **Columbus's** voyage to the Americas, marking a pivotal moment in Spanish and world history."
   }
 ]

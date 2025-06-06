@@ -111,9 +111,9 @@ const LifeTimeline = () => {
 
   const groups = useMemo(() => {
     return new DataSet([
-      { id: "Events", content: "Events", visible: showEvents },
-      { id: "Saints", content: "Saints", visible:  showSaints},
-      { id: "Heresies", content: "Heresies", visible: showHeresies },
+      { id: "Saints", content: "Saints", visible:  showSaints, className: 'dark:text-white' },
+      { id: "Events", content: "Events", visible: showEvents, className: 'dark:text-white' },
+      { id: "Heresies", content: "Heresies", visible: showHeresies, className: 'dark:text-white' },
 
     ]);
   }, [showSaints, showEvents, showHeresies]);
@@ -146,18 +146,17 @@ const LifeTimeline = () => {
   const handleToggleHeresies = useCallback(() => setShowHeresies(prev => !prev), []);
 
   return (
-    <div>
-      <div className="mb-4 flex flex-wrap items-center gap-4">
+    <div>      <div className="mb-4 flex flex-wrap items-center gap-4">
         <div className="flex items-center gap-2">
-          <label className="inline-flex items-center">
+          <label className="inline-flex items-center text-gray-700 dark:text-gray-200">
             <Checkbox checked={showSaints} onChange={handleToggleSaints} className="mr-2" />
             Show Saints
           </label>
-          <label className="inline-flex items-center">
+          <label className="inline-flex items-center text-gray-700 dark:text-gray-200">
             <Checkbox checked={showEvents} onChange={handleToggleEvents} className="mr-2" />
             Show Events
           </label>
-          <label className="inline-flex items-center">
+          <label className="inline-flex items-center text-gray-700 dark:text-gray-200">
             <Checkbox checked={showHeresies} onChange={handleToggleHeresies} className="mr-2" />
             Show Heresies
           </label>        
@@ -166,24 +165,41 @@ const LifeTimeline = () => {
           <TextField 
             id="saint-search"
             label="Search Saints"
-            className="dark:bg-gray-400 dark:text-gray-200 rounded-md"
+            className="dark:bg-gray-700 dark:text-gray-200 rounded-md"
             variant="filled"
             value={saintSearchTerm} 
             // value="Peter" 
             onChange={(e) => setSaintSearchTerm(e.target.value)}
             placeholder="Search saints by name or description..."
             size="small"
+            sx={{
+              '& .MuiInputBase-root': {
+                backgroundColor: 'transparent',
+              },
+              '& .MuiInputLabel-root': {
+                color: 'inherit',
+              },
+              '& .MuiFilledInput-root': {
+                backgroundColor: 'rgba(255, 255, 255, 0.09)',
+                '&:hover': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.13)',
+                },
+                '&.Mui-focused': {
+                  backgroundColor: 'rgba(255, 255, 255, 0.16)',
+                },
+              },
+            }}
           />
           {saintSearchTerm && (
             <button
               onClick={() => setSaintSearchTerm('')}
-              className="px-2 py-1 text-sm text-gray-500 hover:text-gray-700"
+              className="px-2 py-1 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
               title="Clear search"
             >
               ✕
             </button>
           )}
-        </div>        <div className="flex items-center gap-4">
+        </div><div className="flex items-center gap-4">
           <GoToYearWidget onGoToYear={handleGoToYear} />
           <TagFilterWidget 
             availableTags={availableTags}
@@ -191,7 +207,8 @@ const LifeTimeline = () => {
             onTagsChange={handleTagsChange}
           />
         </div>
-      </div>      <TimelineComponent
+      </div>      
+      <TimelineComponent
         items={items}
         groups={groups}
         options={options}

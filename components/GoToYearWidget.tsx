@@ -59,14 +59,42 @@ const GoToYearWidget: React.FC<GoToYearWidgetProps> = ({ onGoToYear }) => {
         onChange={(e) => setYearInput(e.target.value)}
         onKeyPress={handleKeyPress}
         placeholder="e.g. 500, -100"
-        variant="filled"
-        className="w-32 dark:bg-gray-400 dark:text-gray-200 rounded-md"
+        variant="outlined"
+        className="w-32"
+        sx={{
+          '& .MuiInputBase-root': {
+            backgroundColor: 'transparent',
+          },
+          '& .MuiInputLabel-root': {
+            color: 'inherit',
+          },
+          '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+              borderColor: 'rgba(0, 0, 0, 0.23)',
+            },
+            '&:hover fieldset': {
+              borderColor: 'rgba(0, 0, 0, 0.87)',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: 'primary.main',
+            },
+          },
+          '& .MuiInputBase-input': {
+            color: 'inherit',
+          },
+        }}
       />
       <Button
         variant="contained"
         size="small"
         onClick={handleGoToYear}
         disabled={!yearInput.trim()}
+        sx={{
+          backgroundColor: 'primary.main',
+          '&:hover': {
+            backgroundColor: 'primary.dark',
+          },
+        }}
       >
         Go
       </Button>
@@ -78,6 +106,14 @@ const GoToYearWidget: React.FC<GoToYearWidgetProps> = ({ onGoToYear }) => {
         aria-controls={open ? 'quick-year-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        sx={{
+          borderColor: 'rgba(0, 0, 0, 0.23)',
+          color: 'inherit',
+          '&:hover': {
+            borderColor: 'rgba(0, 0, 0, 0.87)',
+            backgroundColor: 'rgba(0, 0, 0, 0.04)',
+          },
+        }}
       >
         Quick Select Year
       </Button>

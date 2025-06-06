@@ -55,8 +55,19 @@ export default function TagFilterWidget({
   };
 
   return (
-    <FormControl sx={{ m: 1, width: 300 }} size="small" className="dark:bg-gray-400 dark:text-gray-200 rounded-md">
-      <InputLabel id="tag-filter-label" variant="filled">Filter by Tags</InputLabel>
+    <FormControl sx={{ m: 1, width: 300 }} size="small">
+      <InputLabel 
+        id="tag-filter-label" 
+        variant="outlined"
+        sx={{
+          color: 'inherit',
+          '&.Mui-focused': {
+            color: 'inherit',
+          },
+        }}
+      >
+        Filter by Tags
+      </InputLabel>
       <Select<string[]>
         labelId="tag-filter-label"
         id="tag-filter"
@@ -72,6 +83,23 @@ export default function TagFilterWidget({
           </Box>
         )}
         MenuProps={MenuProps}
+        sx={{
+          '& .MuiOutlinedInput-root': {
+            backgroundColor: 'transparent',
+            '& fieldset': {
+              borderColor: 'rgba(0, 0, 0, 0.23)',
+            },
+            '&:hover fieldset': {
+              borderColor: 'rgba(0, 0, 0, 0.87)',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: 'primary.main',
+            },
+          },
+          '& .MuiInputBase-input': {
+            color: 'inherit',
+          },
+        }}
       >
         {availableTags.map((tag) => (
           <MenuItem

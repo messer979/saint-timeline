@@ -1,10 +1,10 @@
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import "./globals.css";
 import "../styles/timeline.css";
-import type { Metadata } from "next";
-
-
+import ThemeProvider from "./utils/ThemeProvider";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -27,9 +27,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AppRouterCacheProvider>
-          {children}
-        </AppRouterCacheProvider>
+          <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+        >
+            <AppRouterCacheProvider>
+              {/* <ThemeSwitcher /> */}
+              {children}
+            </AppRouterCacheProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

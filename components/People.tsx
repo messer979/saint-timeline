@@ -648,14 +648,6 @@ export const people: HistoricalFigure[] = [{
   tags: ["confessor", "reformer"]
 },
 {
-  name: "St. Hedwig of Silesia",
-  birthYear: "1174",
-  deathYear: "1243",
-  description: "Duchess, patron of brides",
-  longDescription: "St. Hedwig of Silesia was a German-born Duchess of Silesia known for her extraordinary piety and charitable works. As wife of Duke Henry I of Silesia, she used her position to found monasteries, hospitals, and churches throughout the region. She was particularly devoted to caring for the poor and promoting education. After her husband's death, she became a Cistercian nun. She is venerated as the patron saint of Silesia and brides, and her devotion to religious life and social justice made her a beloved figure in medieval Central Europe.\n\n Names: Jadwiga Śląska (Polish), Hedwig von Schlesien (German)",
-  tags: ["confessor", "monastic founder", "charity worker"]
-},
-{
   name: "St. Gertrude the Great",
   birthYear: "1256",
   deathYear: "1302",

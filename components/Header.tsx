@@ -36,6 +36,7 @@ const Header: React.FC = () => {
 
           {/* Spacer to balance the layout */}
           <div className="w-10"></div>
+          
         </div>
       </header>
 
