@@ -98,3 +98,28 @@
 .vis-item.heresy-timeline-item .vis-item-content {
   color: crimson !important;
 }
+
+/* World Figures timeline items styling */
+.vis-item.world-figure-timeline-item {
+  background-color: rgb(124 58 237) !important; /* purple-600 */
+  border-color: rgb(91 33 182) !important; /* purple-800 */
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+}
+
+.vis-item.world-figure-timeline-item .vis-item-content {
+  color: white !important;
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  padding: 2px 4px !important;
+  white-space: normal !important;
+  overflow: hidden !important;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2 !important;
+  line-clamp: 2 !important;
+  -webkit-box-orient: vertical !important;
+  text-overflow: ellipsis !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}

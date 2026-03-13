@@ -5,6 +5,7 @@ import { DataSet } from 'vis-timeline/standalone';
 import { people } from './People';
 import { keyEvents } from './Events';
 import { heresies } from './Heresies';
+import { worldFigures } from './WorldFigures';
 import MarkdownModal from './MarkdownModal'; // Import the MUI modal component
 import TimelineComponent from './TimelineComponent'; // Import the new timeline component
 import GoToYearWidget from './GoToYearWidget';
@@ -15,7 +16,9 @@ import TextField from '@mui/material/TextField';
 
 const LifeTimeline = () => {
   const [showSaints, setShowSaints] = useState(true);
-  const [showEvents, setShowEvents] = useState(true);  const [showHeresies, setShowHeresies] = useState(true);
+  const [showEvents, setShowEvents] = useState(true);
+  const [showHeresies, setShowHeresies] = useState(true);
+  const [showWorldFigures, setShowWorldFigures] = useState(false);
   const [saintSearchTerm, setSaintSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
   const [modalRecord, setModalRecord] = useState({});
@@ -102,21 +105,35 @@ const LifeTimeline = () => {
     group: 'Heresies',
     className: 'heresy-timeline-item'
   }));
+  const worldFigureItems = worldFigures.map((figure, index) => ({
+    id: `w${index + 1}`,
+    content: `<span class="text-responsive">${figure.name}</span>`,
+    startYear: `${figure.birthYear}`,
+    start: `${figure.birthYear}-01-01`,
+    endYear: `${figure.deathYear}`,
+    end: `${figure.deathYear}-01-01`,
+    title: `${figure.name}: ${figure.description}`,
+    group: 'World Figures',
+    longDescription: figure.longDescription,
+    className: 'world-figure-timeline-item'
+  }));
+
   return new DataSet([
     ...(showSaints ? peopleItems : []),
     ...(showEvents ? eventItems : []),
-    ...(showHeresies ? heresyItems : [])
+    ...(showHeresies ? heresyItems : []),
+    ...(showWorldFigures ? worldFigureItems : [])
   ]);
-  }, [showSaints, showEvents, showHeresies, saintSearchTerm, selectedTags]);
+  }, [showSaints, showEvents, showHeresies, showWorldFigures, saintSearchTerm, selectedTags]);
 
   const groups = useMemo(() => {
     return new DataSet([
       { id: "Saints", content: "Saints", visible:  showSaints, className: 'dark:text-white' },
       { id: "Events", content: "Events", visible: showEvents, className: 'dark:text-white' },
       { id: "Heresies", content: "Heresies", visible: showHeresies, className: 'dark:text-white' },
-
+      { id: "World Figures", content: "World Figures", visible: showWorldFigures, className: 'dark:text-white' },
     ]);
-  }, [showSaints, showEvents, showHeresies]);
+  }, [showSaints, showEvents, showHeresies, showWorldFigures]);
 
   const options = {
     stack: true,
@@ -144,6 +161,7 @@ const LifeTimeline = () => {
   const handleToggleSaints = useCallback(() => setShowSaints(prev => !prev), []);
   const handleToggleEvents = useCallback(() => setShowEvents(prev => !prev), []);
   const handleToggleHeresies = useCallback(() => setShowHeresies(prev => !prev), []);
+  const handleToggleWorldFigures = useCallback(() => setShowWorldFigures(prev => !prev), []);
 
   return (
     <div>      
@@ -160,7 +178,11 @@ const LifeTimeline = () => {
           <label className="inline-flex items-center text-gray-700 dark:text-gray-200">
             <Checkbox checked={showHeresies} onChange={handleToggleHeresies} className="mr-2" />
             Show Heresies
-          </label>        
+          </label>
+          <label className="inline-flex items-center text-gray-700 dark:text-gray-200">
+            <Checkbox checked={showWorldFigures} onChange={handleToggleWorldFigures} className="mr-2" />
+            Show World Figures
+          </label>
         </div>
           <div className="flex items-center gap-2">          <TextField 
             id="saint-search"

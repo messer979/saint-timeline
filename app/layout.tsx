@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { Analytics } from '@vercel/analytics/react';
 import "./globals.css";
 import "../styles/timeline.css";
 import ThemeProvider from "./utils/ThemeProvider";
@@ -37,6 +38,7 @@ export default function RootLayout({
               {children}
             </AppRouterCacheProvider>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
