@@ -78,25 +78,101 @@
 }
 
 /* Event timeline items styling - responsive to dark/light mode */
+.vis-item.event-timeline-item {
+  background-color: rgba(59, 130, 246, 0.12) !important; /* soft blue background */
+  border-color: rgba(59, 130, 246, 0.3) !important;
+  border-radius: 4px !important;
+}
+
 .vis-item.event-timeline-item .vis-item-content {
   color: rgb(31 41 55) !important; /* gray-800 for light mode */
 }
 
 /* Dark mode overrides for events */
 @media (prefers-color-scheme: dark) {
+  .vis-item.event-timeline-item {
+    background-color: rgba(59, 130, 246, 0.2) !important;
+    border-color: rgba(59, 130, 246, 0.4) !important;
+  }
+
   .vis-item.event-timeline-item .vis-item-content {
     color: rgb(229 231 235) !important; /* gray-200 for dark mode */
   }
 }
 
 /* If using Tailwind's dark: class variant for events */
+:is(.dark *) .vis-item.event-timeline-item {
+  background-color: rgba(59, 130, 246, 0.2) !important;
+  border-color: rgba(59, 130, 246, 0.4) !important;
+}
+
 :is(.dark *) .vis-item.event-timeline-item .vis-item-content {
   color: rgb(229 231 235) !important; /* gray-200 for dark mode */
 }
 
 /* Heresy timeline items styling - crimson color for both modes */
+.vis-item.heresy-timeline-item {
+  background-color: rgba(220, 20, 60, 0.1) !important; /* soft crimson background */
+  border-color: rgba(220, 20, 60, 0.3) !important;
+  border-radius: 4px !important;
+}
+
 .vis-item.heresy-timeline-item .vis-item-content {
   color: crimson !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .vis-item.heresy-timeline-item {
+    background-color: rgba(220, 20, 60, 0.18) !important;
+    border-color: rgba(220, 20, 60, 0.4) !important;
+  }
+}
+
+:is(.dark *) .vis-item.heresy-timeline-item {
+  background-color: rgba(220, 20, 60, 0.18) !important;
+  border-color: rgba(220, 20, 60, 0.4) !important;
+}
+
+/* Popes timeline items styling */
+.vis-item.pope-timeline-item {
+  background-color: rgba(234, 179, 8, 0.15) !important; /* soft gold background */
+  border-color: rgba(234, 179, 8, 0.4) !important;
+  border-radius: 3px !important;
+  height: 22px !important;
+  min-height: 22px !important;
+  max-height: 22px !important;
+}
+
+.vis-item.pope-timeline-item .vis-item-content {
+  color: rgb(113, 63, 18) !important; /* dark amber text */
+  font-size: 9px !important;
+  line-height: 1.1 !important;
+  padding: 2px 3px !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  height: 100% !important;
+  box-sizing: border-box !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .vis-item.pope-timeline-item {
+    background-color: rgba(234, 179, 8, 0.22) !important;
+    border-color: rgba(234, 179, 8, 0.5) !important;
+  }
+
+  .vis-item.pope-timeline-item .vis-item-content {
+    color: rgb(253, 224, 71) !important; /* yellow-300 for dark mode */
+  }
+}
+
+:is(.dark *) .vis-item.pope-timeline-item {
+  background-color: rgba(234, 179, 8, 0.22) !important;
+  border-color: rgba(234, 179, 8, 0.5) !important;
+}
+
+:is(.dark *) .vis-item.pope-timeline-item .vis-item-content {
+  color: rgb(253, 224, 71) !important;
 }
 
 /* World Figures timeline items styling */
