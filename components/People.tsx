@@ -1044,5 +1044,93 @@ export const people: HistoricalFigure[] = [{
   description: "Son of Mattathias, leader of the Maccabean revolt, known for his military prowess",
   longDescription: "Son of Mattathias, leader of the Maccabean revolt, known for his military prowess\n\n Names: יְהוּדָה מַקַּבִּי/Yehudah Makkabi (Hebrew - 'Judah the Hammer'), Ἰούδας Μακκαβαῖος/Ioudas Makkabaios (Greek)",
   tags: ["warrior", "martyr", "leader"]
+},
+{
+  name: "St. Augustine of Hippo",
+  birthYear: "0354",
+  deathYear: "0430",
+  description: "Doctor of the Church, author of Confessions and City of God",
+  longDescription: "St. Augustine of Hippo is one of the most influential theologians in the history of Christianity. Born in North Africa to a pagan father and a Christian mother (St. Monica), he led a dissolute youth before his dramatic conversion in 386 AD. As Bishop of Hippo, he wrote extensively against heresies including Pelagianism, Donatism, and Manichaeism. His major works include **Confessions**, an autobiographical account of his conversion, and **City of God**, a monumental defense of Christianity. His theology on original sin, grace, free will, and predestination profoundly shaped Western Christian thought, both Catholic and Protestant.\n\nNames: Aurelius Augustinus Hipponensis (Latin), Αὐγουστῖνος/Augustinos (Greek)",
+  tags: ["doctor of the church", "theologian", "bishop", "philosopher", "confessor"]
+},
+{
+  name: "St. Francis of Assisi",
+  birthYear: "1181",
+  deathYear: "1226",
+  description: "Founder of the Franciscan Order, patron saint of animals and ecology",
+  longDescription: "St. Francis of Assisi renounced his wealthy upbringing to embrace a life of radical poverty and devotion to Christ. He founded the **Franciscan Order**, emphasizing poverty, humility, and love for all of God's creation. He is famous for receiving the **stigmata** — the wounds of Christ — and for his **Canticle of the Sun**, one of the first works of Italian literature. His joyful spirit and commitment to the Gospel continue to inspire millions worldwide.\n\nNames: Francesco d'Assisi (Italian), Franciscus Assisiensis (Latin)",
+  tags: ["monastic founder", "mystic", "confessor"]
+},
+{
+  name: "St. Bernard of Clairvaux",
+  birthYear: "1090",
+  deathYear: "1153",
+  description: "Doctor of the Church, Cistercian reformer and mystic",
+  longDescription: "St. Bernard of Clairvaux was a French abbot and the primary reformer of the **Cistercian Order**. A gifted preacher and writer, he was one of the most influential churchmen of the 12th century, helping to resolve papal schisms, preaching the Second Crusade, and composing deeply devotional works on the Song of Songs and the love of God. He was declared a **Doctor of the Church** and is known as the 'Doctor Mellifluus' (Honey-sweet Doctor) for his eloquence.\n\nNames: Bernardus Claraevallensis (Latin), Bernard de Clairvaux (French)",
+  tags: ["doctor of the church", "abbot", "mystic", "theologian", "preacher"]
+},
+{
+  name: "St. Monica",
+  birthYear: "0332",
+  deathYear: "0387",
+  description: "Mother of St. Augustine, patron of mothers and conversion",
+  longDescription: "St. Monica is best known as the devoted mother of **St. Augustine of Hippo**. For years she prayed and wept for her son's conversion from a dissolute lifestyle and adherence to Manichaeism. Her persevering faith and prayers were ultimately answered when Augustine was baptized by St. Ambrose in Milan in 387 AD. She is the patron saint of mothers, wives, and those struggling with wayward children.\n\nNames: Monica (Latin), Μόνικα/Monika (Greek)",
+  tags: ["confessor"]
+},
+{
+  name: "St. Bede the Venerable",
+  birthYear: "0672",
+  deathYear: "0735",
+  description: "Doctor of the Church, Father of English History",
+  longDescription: "St. Bede, known as the **Venerable Bede**, was an English Benedictine monk at the monastery of Jarrow. He is considered the **Father of English History** for his landmark work, the **Ecclesiastical History of the English People**. A prolific scholar, he wrote on theology, scripture, chronology, and natural science. He helped popularize the use of **Anno Domini** (AD) dating. He was declared a **Doctor of the Church** in 1899.\n\nNames: Beda Venerabilis (Latin), Bede (Old English)",
+  tags: ["doctor of the church", "scholar", "monk"]
+},
+{
+  name: "St. Scholastica",
+  birthYear: "0480",
+  deathYear: "0543",
+  description: "Twin sister of St. Benedict, founder of women's Benedictine monasticism",
+  longDescription: "St. Scholastica was the twin sister of **St. Benedict of Nursia** and is considered the foundress of the **Benedictine nuns**. She dedicated her life to God from an early age. According to St. Gregory the Great, she met her brother once a year for spiritual conversation. At their final meeting, her prayers miraculously caused a storm that prevented Benedict from leaving, and she died three days later. She is the patron saint of nuns and convulsive children.\n\nNames: Scholastica (Latin)",
+  tags: ["monastic founder", "virgin", "contemplative"]
+},
+{
+  name: "St. Helena",
+  birthYear: "0246",
+  deathYear: "0330",
+  description: "Mother of Emperor Constantine, discoverer of the True Cross",
+  longDescription: "St. Helena was the mother of **Emperor Constantine the Great** and one of the most influential women in early Christianity. After her conversion, she undertook a pilgrimage to the **Holy Land** around 326-328 AD, where tradition holds she discovered the **True Cross** of Christ's crucifixion. She founded several important churches in the Holy Land, including the **Church of the Nativity** in Bethlehem and the **Church of the Holy Sepulchre** in Jerusalem.\n\nNames: Flavia Iulia Helena (Latin), Ἑλένη/Helene (Greek)",
+  tags: ["confessor"]
+},
+{
+  name: "St. Columba",
+  birthYear: "0521",
+  deathYear: "0597",
+  description: "Irish missionary who spread Christianity in Scotland",
+  longDescription: "St. Columba was an Irish abbot and missionary who founded the famous monastery on the island of **Iona** off the coast of Scotland in 563 AD. From Iona, he and his monks evangelized the **Picts** and played a crucial role in spreading Christianity throughout Scotland and northern England. He is one of the **Twelve Apostles of Ireland** and a patron saint of Scotland.\n\nNames: Colum Cille (Irish Gaelic - 'dove of the church'), Columba (Latin)",
+  tags: ["missionary", "abbot", "monastic founder"]
+},
+{
+  name: "St. Robert Bellarmine",
+  birthYear: "1542",
+  deathYear: "1621",
+  description: "Doctor of the Church, Jesuit cardinal and Counter-Reformation theologian",
+  longDescription: "St. Robert Bellarmine was an Italian Jesuit cardinal and one of the most important figures of the **Counter-Reformation**. His major work, **Disputationes**, was a comprehensive defense of Catholic doctrine against Protestant theology. He served as a theological advisor to several popes and was involved in the controversies with Galileo. Declared a **Doctor of the Church** in 1931, he is the patron saint of catechists.\n\nNames: Robertus Bellarminus (Latin), Roberto Bellarmino (Italian)",
+  tags: ["doctor of the church", "theologian", "bishop", "scholar"]
+},
+{
+  name: "St. Josemaria Escriva",
+  birthYear: "1902",
+  deathYear: "1975",
+  description: "Founder of Opus Dei",
+  longDescription: "St. Josemaria Escriva was a Spanish priest who founded **Opus Dei** in 1928, an organization dedicated to helping ordinary Christians find God in daily life and work. His key teaching was the **universal call to holiness** — that all people, not just clergy and religious, are called to sanctity through their everyday occupations. His best-known book, **The Way**, has been translated into dozens of languages. He was canonized by Pope John Paul II in 2002.\n\nNames: Josemaría Escrivá de Balaguer (Spanish)",
+  tags: ["confessor", "preacher"]
+},
+{
+  name: "St. John Henry Newman",
+  birthYear: "1801",
+  deathYear: "1890",
+  description: "Cardinal, theologian, and leader of the Oxford Movement",
+  longDescription: "St. John Henry Newman was an English theologian and cardinal who began as an Anglican clergyman and leader of the **Oxford Movement** before converting to Catholicism in 1845. His **Essay on the Development of Christian Doctrine** provided a theological framework for understanding how doctrine evolves while remaining faithful to its origins. His **Apologia Pro Vita Sua** is a classic of spiritual autobiography. He was canonized by Pope Francis in 2019.\n\nNames: John Henry Newman (English)",
+  tags: ["theologian", "philosopher", "scholar", "confessor"]
 }
 ]

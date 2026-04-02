@@ -6,6 +6,7 @@ import { people } from './People';
 import { keyEvents } from './Events';
 import { heresies } from './Heresies';
 import { worldFigures } from './WorldFigures';
+import { popes } from './Popes';
 import MarkdownModal from './MarkdownModal'; // Import the MUI modal component
 import TimelineComponent from './TimelineComponent'; // Import the new timeline component
 import GoToYearWidget from './GoToYearWidget';
@@ -19,6 +20,7 @@ const LifeTimeline = () => {
   const [showEvents, setShowEvents] = useState(true);
   const [showHeresies, setShowHeresies] = useState(true);
   const [showWorldFigures, setShowWorldFigures] = useState(false);
+  const [showPopes, setShowPopes] = useState(true);
   const [saintSearchTerm, setSaintSearchTerm] = useState('');
   const [selectedTags, setSelectedTags] = useState([]);
   const [modalRecord, setModalRecord] = useState({});
@@ -105,6 +107,21 @@ const LifeTimeline = () => {
     group: 'Heresies',
     className: 'heresy-timeline-item'
   }));
+  const popeItems = popes.map((pope, index) => {
+    const displayName = pope.isAntiPope ? `${pope.name} (anti)` : pope.name;
+    return {
+      id: `p${index + 1}`,
+      content: `<span class="text-responsive">${displayName}</span>`,
+      startYear: `${pope.startYear}`,
+      start: `${pope.startYear}-01-01`,
+      endYear: `${pope.endYear}`,
+      end: `${pope.endYear}-12-31`,
+      title: displayName,
+      group: 'Popes',
+      className: 'pope-timeline-item'
+    };
+  });
+
   const worldFigureItems = worldFigures.map((figure, index) => ({
     id: `w${index + 1}`,
     content: `<span class="text-responsive">${figure.name}</span>`,
@@ -122,18 +139,20 @@ const LifeTimeline = () => {
     ...(showSaints ? peopleItems : []),
     ...(showEvents ? eventItems : []),
     ...(showHeresies ? heresyItems : []),
+    ...(showPopes ? popeItems : []),
     ...(showWorldFigures ? worldFigureItems : [])
   ]);
-  }, [showSaints, showEvents, showHeresies, showWorldFigures, saintSearchTerm, selectedTags]);
+  }, [showSaints, showEvents, showHeresies, showPopes, showWorldFigures, saintSearchTerm, selectedTags]);
 
   const groups = useMemo(() => {
     return new DataSet([
       { id: "Saints", content: "Saints", visible:  showSaints, className: 'dark:text-white' },
       { id: "Events", content: "Events", visible: showEvents, className: 'dark:text-white' },
       { id: "Heresies", content: "Heresies", visible: showHeresies, className: 'dark:text-white' },
+      { id: "Popes", content: "Popes", visible: showPopes, className: 'dark:text-white' },
       { id: "World Figures", content: "World Figures", visible: showWorldFigures, className: 'dark:text-white' },
     ]);
-  }, [showSaints, showEvents, showHeresies, showWorldFigures]);
+  }, [showSaints, showEvents, showHeresies, showPopes, showWorldFigures]);
 
   const options = {
     stack: true,
@@ -161,6 +180,7 @@ const LifeTimeline = () => {
   const handleToggleSaints = useCallback(() => setShowSaints(prev => !prev), []);
   const handleToggleEvents = useCallback(() => setShowEvents(prev => !prev), []);
   const handleToggleHeresies = useCallback(() => setShowHeresies(prev => !prev), []);
+  const handleTogglePopes = useCallback(() => setShowPopes(prev => !prev), []);
   const handleToggleWorldFigures = useCallback(() => setShowWorldFigures(prev => !prev), []);
 
   return (
@@ -178,6 +198,10 @@ const LifeTimeline = () => {
           <label className="inline-flex items-center text-gray-700 dark:text-gray-200">
             <Checkbox checked={showHeresies} onChange={handleToggleHeresies} className="mr-2" />
             Show Heresies
+          </label>
+          <label className="inline-flex items-center text-gray-700 dark:text-gray-200">
+            <Checkbox checked={showPopes} onChange={handleTogglePopes} className="mr-2" />
+            Show Popes
           </label>
           <label className="inline-flex items-center text-gray-700 dark:text-gray-200">
             <Checkbox checked={showWorldFigures} onChange={handleToggleWorldFigures} className="mr-2" />
