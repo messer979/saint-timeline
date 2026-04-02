@@ -337,5 +337,6 @@ export const popes: Pope[] = [
   { name: "John Paul I", startYear: "1978", endYear: "1978" },
   { name: "St. John Paul II", startYear: "1978", endYear: "2005" },
   { name: "Benedict XVI", startYear: "2005", endYear: "2013" },
-  { name: "Francis", startYear: "2013", endYear: "2026" },
+  { name: "Francis", startYear: "2013", endYear: "2025" },
+  { name: "Leo XIV", startYear: "2025", endYear: "2026" },
 ];
