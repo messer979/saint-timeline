@@ -3,6 +3,7 @@ interface Pope {
   startYear: string;
   endYear: string;
   isAntiPope?: boolean;
+  description?: string;
 }
 
 export const popes: Pope[] = [
