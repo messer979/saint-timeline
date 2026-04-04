@@ -116,7 +116,7 @@ const LifeTimeline = () => {
       start: `${pope.startYear}-01-01`,
       endYear: `${pope.endYear}`,
       end: `${pope.endYear}-12-31`,
-      title: displayName,
+      title: pope.description ? `${displayName}: ${pope.description}` : displayName,
       group: 'Popes',
       className: 'pope-timeline-item'
     };
